@@ -13,7 +13,9 @@ def animal_name():
 @app.route('/animal/sound', methods=['POST'])
 def animal_sound():
     animal = requests.data.decode("utf-8")
-    if animal == "lion" or animal == "tiger":
+    if animal == "lion":
+        sound = "Rawr"
+    elif animal == "tiger":
         sound = "Rawr"
     elif animal == "bear":
         sound = "Grrr"
