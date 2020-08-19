@@ -10,6 +10,7 @@ services:
         protocol: tcp
       deploy:
         replicas: 2
+    version: '3.3'
     service2:
       build: /service2
       image: ./service2:${APP_VERSION}
