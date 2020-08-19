@@ -2,24 +2,17 @@
 version: '3.3'
 services:
     service1:
-      build: /service1
-      image: ./service1:${APP_VERSION}
+      build: ./service1
       ports:
       - target: 5000
         published: 5000
         protocol: tcp
-      deploy:
-        replicas: 2
-    version: '3.3'
     service2:
-      build: /service2
-      image: ./service2:${APP_VERSION}
+      build: ./service2
       ports:
       - target: 5001
         published: 5001
         protocol: tcp
-      deploy:
-        replicas: 2
 
 ...
 
