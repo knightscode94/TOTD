@@ -2,7 +2,7 @@
 version: '3.3'
 services:
     service1:
-      build: ./service1
+      build: /service1
       image: ./service1:${APP_VERSION}
       ports:
       - target: 5000
@@ -11,7 +11,7 @@ services:
       deploy:
         replicas: 2
     service2:
-      build: ./service2
+      build: /service2
       image: ./service2:${APP_VERSION}
       ports:
       - target: 5001
