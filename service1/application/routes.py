@@ -6,10 +6,10 @@ import requests
 def home():
     return render_template('home.html', title='Home')
 
-@app.route('/get_animal',methods=['GET','POST'])
-def generate_animal():
-    animal = requests.get('http://service2:5001/get/animal')
-    sound = requests.post('http://service2:5001/get/sound', data=animal.text)
+@app.route('/get/animal',methods=['GET','POST'])
+def animal():
+    animal = requests.get('http://service2:5001/animal/name')
+    sound = requests.post('http://service2:5001/animal/sound', data=animal.text)
     return render_template('animals.html', title='Animal', animal = animal.text, sound = sound.text)
 
 

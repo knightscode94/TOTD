@@ -3,15 +3,15 @@ from application import app
 import requests, random
 
 
-@app.route('/get/animal', methods=['GET'])
-def get_animal():
+@app.route('/animal/name', methods=['GET'])
+def animal_name():
     animals = ["shark", "bear", "fox", "lion", "tiger", "beaver"]
     animal = animals[random.randrange(6)]
     return Response(animal, mimetype='text/plain')
 
 
-@app.route('/get/sound', methods=['POST'])
-def animal_sounds():
+@app.route('/animal/sound', methods=['POST'])
+def animal_sound():
     animal = requests.data.decode("utf-8")
     if animal == "lion" or animal == "tiger":
         sound = "Rawr"
