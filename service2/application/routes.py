@@ -12,7 +12,7 @@ def animal_name():
 
 @app.route('/animal/sound', methods=['POST'])
 def animal_sound():
-    animal = requests.data.decode("utf-8")
+    animal = request.data.decode("utf-8")
     if animal == "lion":
         sound = "Rawr"
     elif animal == "tiger":
@@ -25,5 +25,7 @@ def animal_sound():
         sound = "But what does the fox say?"
     elif animal == "beaver":
         sound = "nom nom nom nom nom nom"
+    else:
+        sound = "Its mythical"
 
     return Response(sound, mimetype='text/plain')
