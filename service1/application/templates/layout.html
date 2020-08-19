@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }} Page</title>
+</head>
+<strong>
+    <nav>
+        <ul class="menu">
+            <a href="{{ url_for('animals') }}">Animals</a>
+        </ul>
+    </nav>
+</strong>
+
+<body>
+    <h1>{{  title  }} Page</h1>
+    {% block body_content %}{% endblock %}
+</body>
+
+</html>

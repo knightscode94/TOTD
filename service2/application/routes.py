@@ -1,28 +1,27 @@
-from flask import redirect, url_for, jsonify, request
+from flask import request, Response
 from application import app
 import requests, random
 
 
-
 @app.route('/get/animal', methods=['GET'])
 def get_animal():
-    animals=["shark","bear","fox","lion","tiger","beaver"]
+    animals = ["shark", "bear", "fox", "lion", "tiger", "beaver"]
     animal = animals[random.randrange(6)]
-    return Response(animal,mimetype='text/plain')
+    return Response(animal, mimetype='text/plain')
 
 
-@app.route('/get/sound', methods=['GET'])
+@app.route('/get/sound', methods=['POST'])
 def animal_sounds():
-    response = requests.get('http://api:5000/get/animal')
-    if response.text == "lion" or response.text == "tiger":
-        return "Rawr"
-    if response.text == "bear":
-        return "Grrr"
-    if response.text == "shark":
-        return "duunnn dunn... duuuunnnn duun... duuunnnnnnnn dun dun dun dun dun dun dun dun dun dun dunnnnnnnnnnn dunnnn"
-    if response.text == "fox":
-        return "But what does the fox say?"
-    if response.text == "beaver":
-        return "nom nom nom nom nom nom"
+    animal = requests.data.decode("utf-8")
+    if animal == "lion" or animal == "tiger":
+        sound = "Rawr"
+    elif animal == "bear":
+        sound = "Grrr"
+    elif animal == "shark":
+        sound = "duunnn dunn... duuuunnnn duun... duuunnnnnnnn dun dun dun dun dun dun dun dun dun dun dunnnnnnnnnnn dunnnn"
+    elif animal == "fox":
+        sound = "But what does the fox say?"
+    elif animal == "beaver":
+        sound = "nom nom nom nom nom nom"
 
-    return Response(animal_sounds,mimetype='text/plain')
+    return Response(sound, mimetype='text/plain')
